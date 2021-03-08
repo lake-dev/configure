@@ -1,0 +1,45 @@
+#!/bin/bash
+
+cd ~/Downloads
+curl -O https://www.openssl.org/source/openssl-1.1.1j.tar.gz
+tar -zxvf openssl-1.1.1j.tar.gz
+cd openssl-1.1.1j
+./config
+sudo -S make
+sudo -S make install
+
+
+cd ~/Downloads
+curl -O https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar
+tar -zxvf libevent-2.1.8-stable.tar
+cd libevent-2.1.8-stable
+./configure
+sudo -S make
+sudo -S make install
+
+
+cd ~/Downloads
+curl -O https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
+tar -zxvf pkg-config-0.29.2.tar.gz
+cd pkg-config-0.29.2
+LDFLAGS="-framework CoreFoundation -framework Carbon" ./configure --with-internal-glib
+sudo -S make
+sudo -S make install
+
+
+cd ~/Downloads
+curl -O https://ftp.gnu.org/gnu/wget/wget-1.19.5.tar.gz
+tar -zxvf wget-1.19.5.tar.gz
+cd wget-1.19.5/
+./configure --with-ssl=openssl
+sudo -S make
+sudo -S make install
+
+
+cd ~/Downloads
+curl -O https://distfiles.macports.org/sstp-client/sstp-client-1.0.13.tar.gz
+tar -zxvf sstp-client-1.0.13.tar.gz
+cd sstp-client-1.0.13
+./configure --disable-ppp-plugin
+sudo -S make
+sudo -S make install
